@@ -29,8 +29,16 @@
         <name>LightningComponentBundle</name>
     </types>
     <types>
+        <members>Document__c</members>
+        <name>customObject</name>
+    </types>
+    <types>
         <members>*</members>
         <name>StaticResource</name>
+    </types>
+    <types>
+        <members>Document__c</members>
+        <name>CustomTab</name>
     </types>
     <version>57.0</version>
 </Package>
