@@ -54,15 +54,13 @@ export default class DocumentManagement extends LightningElement {
             this.documentList = undefined;
         }
     }
-
-
+  
     onHandleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
         this.sortDirection = sortDirection;
         this.sortedBy = sortedBy;
     }
-
-
+  
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const selectedRow = event.detail.row;
@@ -77,7 +75,6 @@ export default class DocumentManagement extends LightningElement {
             default:
         }
     }
-
 
     deleteRow(selectedId) {
         console.log('selectedId', selectedId);
@@ -114,7 +111,6 @@ export default class DocumentManagement extends LightningElement {
         }else{
             this.queryTerm = '';
         }
-        
     }
 
     showToast(title, message, variant){
