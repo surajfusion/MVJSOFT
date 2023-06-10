@@ -54,13 +54,13 @@ export default class DocumentManagement extends LightningElement {
             this.documentList = undefined;
         }
     }
-
+  
     onHandleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
         this.sortDirection = sortDirection;
         this.sortedBy = sortedBy;
     }
-
+  
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const selectedRow = event.detail.row;
@@ -80,23 +80,11 @@ export default class DocumentManagement extends LightningElement {
         console.log('selectedId', selectedId);
         deleteRecord(selectedId)
             .then(() => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Success',
-                        message: 'Record deleted',
-                        variant: 'success'
-                    })
-                );
+                this.showToast('Success', 'Record deleted', 'success');
                 refreshApex(this.tempDocumentList);
             })
             .catch(error => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error deleting record',
-                        message: error.body.message,
-                        variant: 'error'
-                    })
-                );
+                this.showToast('Error deleting record', error.body.message, 'error');
             });
     }
 
@@ -113,6 +101,7 @@ export default class DocumentManagement extends LightningElement {
     handleSuccess(){
         refreshApex(this.tempDocumentList);
         this.handleCancel();
+        this.showToast('Success', 'Record Updated', 'success');
     }
 
     handleInputChange(event){
@@ -122,6 +111,17 @@ export default class DocumentManagement extends LightningElement {
         }else{
             this.queryTerm = '';
         }
+    }
+
+    showToast(title, message, variant){
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: title,
+                message: message,
+                variant: variant,
+                mode: 'dismissable'
+            })
+        );
     }
 
 }

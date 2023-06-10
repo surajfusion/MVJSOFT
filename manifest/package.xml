@@ -16,5 +16,13 @@
         <members>Document__c</members>
         <name>CustomTab</name>
     </types>
+    <types>
+        <members>Document_Management</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Home_Document_Management</members>
+        <name>FlexiPage</name>
+    </types>
     <version>57.0</version>
 </Package>
